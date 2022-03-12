@@ -42,6 +42,7 @@ function! s:StructChineseLawText2Markdown()
   call map(l:lines, 'substitute(v:val, "^目录$", "## 目录", "g")')
   execute("%delete")
   call setline(1, l:lines)
+  execute '1,$-1s/\n\+/\r\r/g'
   call setpos(".", [0, 1, 1, 0])
   call setreg('"', l:unnamed)
   unlet l:lines

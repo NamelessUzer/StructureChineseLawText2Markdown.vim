@@ -12,7 +12,7 @@ function! s:StructChineseLawText2Markdown()
     call map(lst, '"- " . v:val')
     let l:lines = l:lines[:idx-1] + lst + l:lines[idx+1:]
   endwhile
-  call map(l:lines, 'substitute(v:val, "　[\\u2000-\\u200a]", " ", "g")')
+  call map(l:lines, 'substitute(v:val, "[　\\u2000-\\u200a]", " ", "g")')
   call map(l:lines, 'substitute(v:val, "[､、]\\s*", "、", "g")')
   call map(l:lines, 'substitute(v:val, "[,，]\\s*", "，", "g")')
   call map(l:lines, 'substitute(v:val, "[;；]\\s*", "；", "g")')
